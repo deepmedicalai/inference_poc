@@ -1,0 +1,8 @@
+flask
+flask_cors
+pydicom
+Pillow
+opencv-python
+simplejson
+tensorflow==2.0.0-beta1
+tqdm
