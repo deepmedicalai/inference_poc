@@ -1,0 +1,309 @@
+#!/bin/bash -eu
+ARCHIVE_HOST_NAME="$1"
+
+export LOG_FILE=/mutable/archiveloop.log
+
+export ONE_MOUNT=/mnt/dmai1
+export TWO_MOUNT=/mnt/dmai2
+export ARCHIVE_MOUNT=/mnt/archive
+export CURRENT_SESSION_ID=""
+
+function log () {
+  echo "$( date )" >> "$LOG_FILE"
+  echo "$1" >> "$LOG_FILE"
+}
+
+function fix_errors_in_mount_point () {
+  local mount_point="$1"
+  log "Running fsck on $mount_point..."
+  /sbin/fsck "$mount_point" -- -a >> "$LOG_FILE" 2>&1 || echo ""
+  log "Finished fsck on $mount_point."
+}
+
+function fix_errors_in_mounted_files () {
+  fix_errors_in_mount_point "$ONE_MOUNT"
+  fix_errors_in_mount_point "$TWO_MOUNT"
+}
+
+function archive_is_reachable () {
+  local reachable=true
+
+  /root/bin/archive-is-reachable.sh "$ARCHIVE_HOST_NAME" || reachable=false
+
+  if [ "$reachable" = false ]
+  then
+    false
+    return
+  fi
+
+  true
+}
+
+function mainserver_has_new_session () {
+  log "mainserver_has_new_session: initiate request"
+  main_server_response=$(/root/bin/main-server-ready-for-transfer.sh)
+  log "mainserver_has_new_session: processing response '$main_server_response'"
+  case "$main_server_response" in
+        "not_ready")
+            log "mainserver_has_new_session:not_ready" 
+            false
+            return
+            ;;
+        "error")
+            log "mainserver_has_new_session:error"
+            false
+            return
+            ;;
+        *)
+            log "mainserver_has_new_session:new session:$main_server_response"
+            CURRENT_SESSION_ID="$main_server_response" 
+            true
+            return
+            ;;
+    esac
+
+}
+
+function connect_usb_drives_to_host() {
+  log "Connecting usb to host..."
+  modprobe g_mass_storage
+  log "Connected usb to host."
+}
+
+function wait_for_archive_to_be_reachable () {
+  log "Waiting for archive to be reachable..."
+  while [ true ]
+  do
+    if archive_is_reachable
+    then
+      log "Archive is reachable. Checking main server"
+
+      if mainserver_has_new_session
+      then
+        break
+      fi
+      #break
+    fi
+    if [ -e /tmp/archive_is_reachable ]
+    then
+      log "Simulating archive is reachable"
+      rm /tmp/archive_is_reachable
+      break
+    fi
+    sleep 1
+  done
+}
+
+function retry () {
+  local attempts=0
+  while [ true ]
+  do
+    if eval "$@"
+    then
+      true
+      return
+    fi
+    if [ "$attempts" -ge 10 ]
+    then
+      log "Attempts exhausted."
+      false
+      return
+    fi
+    log "Sleeping before retry..."
+    /bin/sleep 1
+    attempts=$((attempts + 1))
+    log "Retrying..."
+  done
+  false
+  return
+}
+
+function mount_mountpoint () {
+  local mount_point="$1"
+  log "Mounting $mount_point..."
+
+  local mounted=true
+  mount "$mount_point" >> "$LOG_FILE" 2>&1 || mounted=false
+  if [ "$mounted" = true ]
+  then
+    log "Mounted $mount_point."
+    true
+    return
+  else
+    log "Failed to mount $mount_point."
+    false
+    return
+  fi
+}
+
+function ensure_mountpoint_is_mounted () {
+  local mount_point="$1"
+  local mount_exists=true
+
+  findmnt --mountpoint "$mount_point" > /dev/null || mount_exists=false
+
+  if [ "$mount_exists" = true ]
+  then
+    log "$mount_point is already mounted."
+  else
+    mount_mountpoint "$mount_point"
+  fi
+}
+
+function ensure_mountpoint_is_mounted_with_retry () {
+  retry ensure_mountpoint_is_mounted "$1"
+}
+
+function fix_errors_in_one_file () {
+  fix_errors_in_mount_point "$ONE_MOUNT"
+}
+
+function ensure_one_file_is_mounted () {
+  log "Ensuring ONE file is mounted..."
+  ensure_mountpoint_is_mounted_with_retry "$ONE_MOUNT"
+  log "Ensured ONE file is mounted."
+}
+
+function ensure_two_file_is_mounted () {
+  log "Ensuring TWO backing file is mounted..."
+  ensure_mountpoint_is_mounted_with_retry "$TWO_MOUNT"
+  log "Ensured TWO drive is mounted."
+}
+
+function unmount_mount_point () {
+  local mount_point="$1"
+  log "Unmounting $mount_point..."
+  umount "$mount_point" >> "$LOG_FILE" 2>&1
+  log "Unmounted $mount_point."
+}
+
+function unmount_one_file () {
+  unmount_mount_point "$ONE_MOUNT"
+}
+
+function unmount_two_file () {
+  unmount_mount_point "$TWO_MOUNT"
+}
+
+function fix_errors_in_two_file () {
+  fix_errors_in_mount_point "$TWO_MOUNT"
+}
+
+function wait_for_archive_to_be_unreachable () {
+  log "Waiting for archive to be unreachable..."
+  while [ true ]
+    do
+      if ! retry archive_is_reachable
+      then
+        log "Archive is unreachable."
+        break
+      fi
+      if [ -e /tmp/archive_is_unreachable ]
+      then
+        log "Simulating archive being unreachable."
+        rm /tmp/archive_is_unreachable
+        break
+      fi
+      sleep 1
+  done
+}
+
+function mount_and_fix_errors_in_one_file () {
+  ensure_one_file_is_mounted
+  fix_errors_in_one_file
+  unmount_one_file
+}
+
+function mount_and_fix_errors_in_two_file () {
+  if [ -e "$TWO_MOUNT" ]
+  then
+    ensure_two_file_is_mounted
+    fix_errors_in_two_file
+    unmount_two_file
+  fi
+}
+
+function mount_and_fix_errors_in_files () {
+  mount_and_fix_errors_in_one_file
+  mount_and_fix_errors_in_two_file
+}
+
+function disconnect_usb_drives_from_host () {
+  log "Disconnecting usb from host..."
+  modprobe -r g_mass_storage
+  log "Disconnected usb from host."
+}
+
+function archive_deepmedicalai_clips () {
+  log "Starting for '$CURRENT_SESSION_ID' session..."
+
+  /root/bin/connect-archive.sh
+
+  disconnect_usb_drives_from_host
+
+  ensure_one_file_is_mounted
+
+  fix_errors_in_one_file
+
+  /root/bin/archive-clips.sh "$CURRENT_SESSION_ID"
+
+  /root/bin/disconnect-archive.sh
+
+  unmount_one_file
+
+  connect_usb_drives_to_host
+}
+
+function archive_clips () {
+  log "Archiving..."
+  if archive_deepmedicalai_clips
+  then
+    log "Finished archiving."
+  else
+    log "Archiving failed."
+  fi
+}
+
+function truncate_log () {
+  local log_length=$( wc -l "$LOG_FILE" | cut -d' ' -f 1 )
+  if [ "$log_length" -gt 10000 ]
+  then
+    log "Truncating log..."
+    local log_file2="${LOG_FILE}.2"
+    tail -n 10000 "$LOG_FILE" > "${LOG_FILE}.2"
+	mv "$log_file2" "$LOG_FILE"
+  fi
+}
+
+export -f mount_mountpoint
+export -f ensure_mountpoint_is_mounted
+export -f retry
+export -f ensure_mountpoint_is_mounted_with_retry
+export -f log
+
+log "Starting..."
+
+if archive_is_reachable
+then
+  # archive_clips will fix errors in the ONE file
+  mount_and_fix_errors_in_two_file
+
+  archive_clips
+
+  wait_for_archive_to_be_unreachable
+else
+  mount_and_fix_errors_in_files
+
+  connect_usb_drives_to_host
+fi
+
+while [ true ]
+do
+  wait_for_archive_to_be_reachable
+
+  archive_clips
+
+  truncate_log
+  
+  wait_for_archive_to_be_unreachable
+done

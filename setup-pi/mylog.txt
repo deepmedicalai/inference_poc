@@ -1,0 +1,767 @@
+root@raspberrypi:~# ./setup-teslausb
+Updating package index files...
+Get:1 http://raspbian.raspberrypi.org/raspbian buster InRelease [15.0 kB]
+Get:2 http://archive.raspberrypi.org/debian buster InRelease [25.1 kB]
+Get:3 http://raspbian.raspberrypi.org/raspbian buster/main armhf Packages [13.0 MB]
+Get:4 http://archive.raspberrypi.org/debian buster/main armhf Packages [212 kB]
+Fetched 13.2 MB in 52s (255 kB/s)                                                                                                                                                                                   
+Reading package lists... Done
+Verifying that the requested configuration is valid...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   693  100   693    0     0   2457      0 --:--:-- --:--:-- --:--:--  2457
+Downloaded /tmp/verify-configuration.sh ...
+Verifying that there is sufficient space available on the MicroSD card...
+There is sufficient space available.
+Downloading additional setup scripts.
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  2134  100  2134    0     0   4225      0 --:--:-- --:--:-- --:--:--  4225
+Downloaded /tmp/create-backingfiles-partition.sh ...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1474  100  1474    0     0   5321      0 --:--:-- --:--:-- --:--:--  5340
+Downloaded /tmp/create-backingfiles.sh ...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  2194  100  2194    0     0   7978      0 --:--:-- --:--:-- --:--:--  7978
+Downloaded /tmp/make-root-fs-readonly.sh ...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  5660  100  5660    0     0  22371      0 --:--:-- --:--:-- --:--:-- 22371
+Downloaded /root/configure.sh ...
+~ ~
+Fixing the modules-load parameter in /boot/cmdline.txt...
+Fixed cmdline.txt.
+Starting to create backing files partition...
+Checking existing partitions...
+Modifying partition table for backing files partition...
+Modifying partition table for mutable (writable) partition for script usage...
+Writing updated partitions to fstab and /boot/cmdline.txt
+Formatting new partitions...
+mke2fs 1.44.5 (15-Dec-2018)
+Discarding device blocks: done                            
+Creating filesystem with 7229440 4k blocks and 1810432 inodes
+Filesystem UUID: cfbca3f7-54f4-4414-9a03-88aa73f5fa4a
+Superblock backups stored on blocks: 
+        32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208, 
+        4096000
+
+Allocating group tables: done                            
+Writing inode tables: done                            
+Creating journal (32768 blocks): done
+Writing superblocks and filesystem accounting information: done   
+
+mke2fs 1.44.5 (15-Dec-2018)
+Discarding device blocks: done                            
+Creating filesystem with 102400 1k blocks and 25688 inodes
+Filesystem UUID: dc977dc1-5d7c-47ff-8529-77bd1081070c
+Superblock backups stored on blocks: 
+        8193, 24577, 40961, 57345, 73729
+
+Allocating group tables: done                            
+Writing inode tables: done                            
+Creating journal (4096 blocks): done
+Writing superblocks and filesystem accounting information: done 
+
+Mounting the partition for the backing files...
+Mounted the partition for the backing files.
+Creating backing disk files.
+Allocating 13412370K for /backingfiles/cam_disk.bin...
+mkfs.fat 4.1 (2017-01-24)
+Allocating 13412364K for /backingfiles/music_disk.bin...
+mkfs.fat 4.1 (2017-01-24)
+Configuring the hostname...
+Configured the hostname.
+Getting files from cimryan:master
+Pushover not configured.
+Starting download for /root/bin/send-pushover
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   503  100   503    0     0   1344      0 --:--:-- --:--:-- --:--:--  1344
+Done
+Checking archive configs: done
+Using archive module: run/cifs_archive
+Installing base archive scripts into /root/bin
+Starting download for /root/bin/archiveloop
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  5513  100  5513    0     0  19974      0 --:--:-- --:--:-- --:--:-- 20047
+Done
+Starting download for /root/bin/remountfs_rw
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   276  100   276    0     0     98      0  0:00:02  0:00:02 --:--:--    98
+Done
+Starting download for /root/bin/lookup-ip-address.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   157  100   157    0     0    613      0 --:--:-- --:--:-- --:--:--   613
+Done
+Installing archive module scripts
+Starting download for /root/bin/verify-archive-configuration.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  2047  100  2047    0     0   7207      0 --:--:-- --:--:-- --:--:--  7233
+Done
+Starting download for /root/bin/configure-archive.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   767  100   767    0     0   3043      0 --:--:-- --:--:-- --:--:--  3055
+Done
+Starting download for /root/bin/archive-clips.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   552  100   552    0     0   2029      0 --:--:-- --:--:-- --:--:--  2029
+Done
+Starting download for /root/bin/connect-archive.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   228  100   228    0     0    820      0 --:--:-- --:--:-- --:--:--   823
+Done
+Starting download for /root/bin/disconnect-archive.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    72  100    72    0     0    275      0 --:--:-- --:--:-- --:--:--   275
+Done
+Starting download for /root/bin/write-archive-configs-to.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   121  100   121    0     0    456      0 --:--:-- --:--:-- --:--:--   458
+Done
+Starting download for /root/bin/archive-is-reachable.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   101  100   101    0     0    353      0 --:--:-- --:--:-- --:--:--   351
+Done
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following additional packages will be installed:
+  libpcap0.8 libtcl8.6
+Suggested packages:
+  tcl8.6
+The following NEW packages will be installed:
+  hping3 libpcap0.8 libtcl8.6
+0 upgraded, 3 newly installed, 0 to remove and 10 not upgraded.
+Need to get 1,099 kB of archives.
+After this operation, 4,455 kB of additional disk space will be used.
+Get:1 http://raspbian.raspberrypi.org/raspbian buster/main armhf libpcap0.8 armhf 1.8.1-6 [124 kB]
+Get:2 http://raspbian.raspberrypi.org/raspbian buster/main armhf libtcl8.6 armhf 8.6.9+dfsg-2 [878 kB]
+Get:3 http://raspbian.raspberrypi.org/raspbian buster/main armhf hping3 armhf 3.a2.ds2-7 [97.2 kB]
+Fetched 1,099 kB in 4s (310 kB/s)
+Selecting previously unselected package libpcap0.8:armhf.
+(Reading database ... 37620 files and directories currently installed.)
+Preparing to unpack .../libpcap0.8_1.8.1-6_armhf.deb ...
+Unpacking libpcap0.8:armhf (1.8.1-6) ...
+Selecting previously unselected package libtcl8.6:armhf.
+Preparing to unpack .../libtcl8.6_8.6.9+dfsg-2_armhf.deb ...
+Unpacking libtcl8.6:armhf (8.6.9+dfsg-2) ...
+Selecting previously unselected package hping3.
+Preparing to unpack .../hping3_3.a2.ds2-7_armhf.deb ...
+Unpacking hping3 (3.a2.ds2-7) ...
+Setting up libpcap0.8:armhf (1.8.1-6) ...
+Setting up libtcl8.6:armhf (8.6.9+dfsg-2) ...
+Setting up hping3 (3.a2.ds2-7) ...
+Processing triggers for man-db (2.8.5-2) ...
+Processing triggers for libc-bin (2.28-10+rpi1) ...
+W: --force-yes is deprecated, use one of the options starting with --allow instead.
+Verifying that the archive server dmitrys-mbp is reachable...
+The archive server is reachable.
+Verifying that the archive share is mountable...
+Mount command-line: 
+mount -t cifs //192.168.1.203/share /tmp/archivetestmount -o vers=3.0,credentials=/tmp/teslaCamArchiveCredentials,iocharset=utf8,file_mode=0777,dir_mode=0777
+The archive share is mountable.
+Configuring the archive...
+Configured the archive.
+Configuring /etc/rc.local to run the archive scripts at startup...
+Installed rc.local.
+Removing unwanted packages...
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following package was automatically installed and is no longer required:
+  dc
+Use 'apt autoremove' to remove it.
+The following packages will be REMOVED:
+  dphys-swapfile* logrotate* triggerhappy*
+0 upgraded, 0 newly installed, 3 to remove and 10 not upgraded.
+After this operation, 301 kB disk space will be freed.
+(Reading database ... 37901 files and directories currently installed.)
+Removing dphys-swapfile (20100506-5) ...
+Removing logrotate (3.14.0-4) ...
+Removing triggerhappy (0.5.0-1) ...
+Warning: Stopping triggerhappy.service, but it can still be activated by:
+  triggerhappy.socket
+Processing triggers for man-db (2.8.5-2) ...
+(Reading database ... 37859 files and directories currently installed.)
+Purging configuration files for logrotate (3.14.0-4) ...
+Purging configuration files for triggerhappy (0.5.0-1) ...
+Purging configuration files for dphys-swapfile (20100506-5) ...
+Processing triggers for systemd (241-5+rpi1) ...
+W: --force-yes is deprecated, use one of the options starting with --allow instead.
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages will be REMOVED:
+  dc*
+0 upgraded, 0 newly installed, 1 to remove and 10 not upgraded.
+After this operation, 140 kB disk space will be freed.
+(Reading database ... 37850 files and directories currently installed.)
+Removing dc (1.07.1-2) ...
+Processing triggers for install-info (6.5.0.dfsg.1-4+b1) ...
+Processing triggers for man-db (2.8.5-2) ...
+(Reading database ... 37835 files and directories currently installed.)
+Purging configuration files for dc (1.07.1-2) ...
+W: --force-yes is deprecated, use one of the options starting with --allow instead.
+Installing ntp and busybox-syslogd...
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following additional packages will be installed:
+  busybox libevent-core-2.1-6 libevent-pthreads-2.1-6 libopts25 sntp
+Suggested packages:
+  ntp-doc
+The following packages will be REMOVED:
+  rsyslog
+The following NEW packages will be installed:
+  busybox busybox-syslogd libevent-core-2.1-6 libevent-pthreads-2.1-6 libopts25 ntp sntp
+0 upgraded, 7 newly installed, 1 to remove and 10 not upgraded.
+Need to get 1,513 kB of archives.
+After this operation, 2,000 kB of additional disk space will be used.
+Get:1 http://raspbian.raspberrypi.org/raspbian buster/main armhf busybox armhf 1:1.30.1-4 [405 kB]
+Get:2 http://raspbian.raspberrypi.org/raspbian buster/main armhf busybox-syslogd all 1:1.30.1-4 [26.1 kB]
+Get:3 http://raspbian.raspberrypi.org/raspbian buster/main armhf libevent-core-2.1-6 armhf 2.1.8-stable-4 [117 kB]
+Get:4 http://raspbian.raspberrypi.org/raspbian buster/main armhf libevent-pthreads-2.1-6 armhf 2.1.8-stable-4 [47.6 kB]
+Get:5 http://raspbian.raspberrypi.org/raspbian buster/main armhf libopts25 armhf 1:5.18.12-4 [61.1 kB]
+Get:6 http://raspbian.raspberrypi.org/raspbian buster/main armhf ntp armhf 1:4.2.8p12+dfsg-4 [695 kB]
+Get:7 http://raspbian.raspberrypi.org/raspbian buster/main armhf sntp armhf 1:4.2.8p12+dfsg-4 [161 kB]                                                                                                              
+Fetched 1,513 kB in 7s (206 kB/s)                                                                                                                                                                                   
+(Reading database ... 37835 files and directories currently installed.)
+Removing rsyslog (8.1901.0-1) ...
+Selecting previously unselected package busybox.
+(Reading database ... 37777 files and directories currently installed.)
+Preparing to unpack .../0-busybox_1%3a1.30.1-4_armhf.deb ...
+Unpacking busybox (1:1.30.1-4) ...
+Selecting previously unselected package busybox-syslogd.
+Preparing to unpack .../1-busybox-syslogd_1%3a1.30.1-4_all.deb ...
+Unpacking busybox-syslogd (1:1.30.1-4) ...
+Selecting previously unselected package libevent-core-2.1-6:armhf.
+Preparing to unpack .../2-libevent-core-2.1-6_2.1.8-stable-4_armhf.deb ...
+Unpacking libevent-core-2.1-6:armhf (2.1.8-stable-4) ...
+Selecting previously unselected package libevent-pthreads-2.1-6:armhf.
+Preparing to unpack .../3-libevent-pthreads-2.1-6_2.1.8-stable-4_armhf.deb ...
+Unpacking libevent-pthreads-2.1-6:armhf (2.1.8-stable-4) ...
+Selecting previously unselected package libopts25:armhf.
+Preparing to unpack .../4-libopts25_1%3a5.18.12-4_armhf.deb ...
+Unpacking libopts25:armhf (1:5.18.12-4) ...
+Selecting previously unselected package ntp.
+Preparing to unpack .../5-ntp_1%3a4.2.8p12+dfsg-4_armhf.deb ...
+Unpacking ntp (1:4.2.8p12+dfsg-4) ...
+Selecting previously unselected package sntp.
+Preparing to unpack .../6-sntp_1%3a4.2.8p12+dfsg-4_armhf.deb ...
+Unpacking sntp (1:4.2.8p12+dfsg-4) ...
+Setting up libopts25:armhf (1:5.18.12-4) ...
+Setting up busybox (1:1.30.1-4) ...
+Setting up ntp (1:4.2.8p12+dfsg-4) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/ntp.service → /lib/systemd/system/ntp.service.
+Setting up busybox-syslogd (1:1.30.1-4) ...
+Setting up libevent-core-2.1-6:armhf (2.1.8-stable-4) ...
+Setting up libevent-pthreads-2.1-6:armhf (2.1.8-stable-4) ...
+Setting up sntp (1:4.2.8p12+dfsg-4) ...
+Processing triggers for systemd (241-5+rpi1) ...
+Processing triggers for man-db (2.8.5-2) ...
+Processing triggers for libc-bin (2.28-10+rpi1) ...
+W: --force-yes is deprecated, use one of the options starting with --allow instead.
+(Reading database ... 37894 files and directories currently installed.)
+Purging configuration files for rsyslog (8.1901.0-1) ...
+Processing triggers for systemd (241-5+rpi1) ...
+Configuring system...
+Mounting the mutable partition...
+Mounted.
+Moving fake-hwclock data
+Upgrading installed packages...
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Calculating upgrade... Done
+The following package was automatically installed and is no longer required:
+  rpi.gpio-common
+Use 'apt autoremove' to remove it.
+The following packages will be upgraded:
+  libraspberrypi-bin libraspberrypi-dev libraspberrypi-doc libraspberrypi0 patch python-rpi.gpio raspberrypi-bootloader raspberrypi-kernel raspberrypi-net-mods raspberrypi-sys-mods
+10 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 92.4 MB of archives.
+After this operation, 13.3 kB of additional disk space will be used.
+Get:1 http://raspbian.raspberrypi.org/raspbian buster/main armhf patch armhf 2.7.6-3+deb10u1 [115 kB]
+Get:2 http://archive.raspberrypi.org/debian buster/main armhf libraspberrypi-doc armhf 1.20190718-1 [31.4 MB]
+Get:3 http://archive.raspberrypi.org/debian buster/main armhf libraspberrypi-dev armhf 1.20190718-1 [408 kB]                                                                                                        
+Get:4 http://archive.raspberrypi.org/debian buster/main armhf raspberrypi-kernel armhf 1.20190718-1 [53.5 MB]                                                                                                       
+Get:5 http://archive.raspberrypi.org/debian buster/main armhf libraspberrypi-bin armhf 1.20190718-1 [338 kB]                                                                                                        
+Get:6 http://archive.raspberrypi.org/debian buster/main armhf libraspberrypi0 armhf 1.20190718-1 [843 kB]                                                                                                           
+Get:7 http://archive.raspberrypi.org/debian buster/main armhf raspberrypi-bootloader armhf 1.20190718-1 [5,677 kB]                                                                                                  
+Get:8 http://archive.raspberrypi.org/debian buster/main armhf raspberrypi-sys-mods armhf 20190722 [10.1 kB]                                                                                                         
+Get:9 http://archive.raspberrypi.org/debian buster/main armhf python-rpi.gpio armhf 0.7.0~buster-1 [23.6 kB]                                                                                                        
+Get:10 http://archive.raspberrypi.org/debian buster/main armhf raspberrypi-net-mods all 1.3.0 [3,784 B]                                                                                                             
+Fetched 92.4 MB in 2min 7s (729 kB/s)                                                                                                                                                                               
+apt-listchanges: Reading changelogs...
+(Reading database ... 37889 files and directories currently installed.)
+Preparing to unpack .../0-libraspberrypi-doc_1.20190718-1_armhf.deb ...
+Unpacking libraspberrypi-doc (1.20190718-1) over (1.20190709-1) ...
+Preparing to unpack .../1-libraspberrypi-dev_1.20190718-1_armhf.deb ...
+Unpacking libraspberrypi-dev (1.20190718-1) over (1.20190709-1) ...
+Preparing to unpack .../2-raspberrypi-kernel_1.20190718-1_armhf.deb ...
+Adding 'diversion of /boot/bcm2708-rpi-b-plus.dtb to /usr/share/rpikernelhack/bcm2708-rpi-b-plus.dtb by rpikernelhack'
+Adding 'diversion of /boot/bcm2708-rpi-b.dtb to /usr/share/rpikernelhack/bcm2708-rpi-b.dtb by rpikernelhack'
+Adding 'diversion of /boot/bcm2708-rpi-cm.dtb to /usr/share/rpikernelhack/bcm2708-rpi-cm.dtb by rpikernelhack'
+Adding 'diversion of /boot/bcm2708-rpi-zero-w.dtb to /usr/share/rpikernelhack/bcm2708-rpi-zero-w.dtb by rpikernelhack'
+Adding 'diversion of /boot/bcm2708-rpi-zero.dtb to /usr/share/rpikernelhack/bcm2708-rpi-zero.dtb by rpikernelhack'
+Adding 'diversion of /boot/bcm2709-rpi-2-b.dtb to /usr/share/rpikernelhack/bcm2709-rpi-2-b.dtb by rpikernelhack'
+Adding 'diversion of /boot/bcm2710-rpi-3-b-plus.dtb to /usr/share/rpikernelhack/bcm2710-rpi-3-b-plus.dtb by rpikernelhack'
+Adding 'diversion of /boot/bcm2710-rpi-3-b.dtb to /usr/share/rpikernelhack/bcm2710-rpi-3-b.dtb by rpikernelhack'
+Adding 'diversion of /boot/bcm2710-rpi-cm3.dtb to /usr/share/rpikernelhack/bcm2710-rpi-cm3.dtb by rpikernelhack'
+Adding 'diversion of /boot/bcm2711-rpi-4-b.dtb to /usr/share/rpikernelhack/bcm2711-rpi-4-b.dtb by rpikernelhack'
+Adding 'diversion of /boot/kernel.img to /usr/share/rpikernelhack/kernel.img by rpikernelhack'
+Adding 'diversion of /boot/kernel7.img to /usr/share/rpikernelhack/kernel7.img by rpikernelhack'
+Adding 'diversion of /boot/kernel7l.img to /usr/share/rpikernelhack/kernel7l.img by rpikernelhack'
+Adding 'diversion of /boot/COPYING.linux to /usr/share/rpikernelhack/COPYING.linux by rpikernelhack'
+Adding 'diversion of /boot/overlays/README to /usr/share/rpikernelhack/overlays/README by rpikernelhack'
+Adding 'diversion of /boot/overlays/act-led.dtbo to /usr/share/rpikernelhack/overlays/act-led.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/adau1977-adc.dtbo to /usr/share/rpikernelhack/overlays/adau1977-adc.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/adau7002-simple.dtbo to /usr/share/rpikernelhack/overlays/adau7002-simple.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/ads1015.dtbo to /usr/share/rpikernelhack/overlays/ads1015.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/ads1115.dtbo to /usr/share/rpikernelhack/overlays/ads1115.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/ads7846.dtbo to /usr/share/rpikernelhack/overlays/ads7846.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/adv7282m.dtbo to /usr/share/rpikernelhack/overlays/adv7282m.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/adv728x-m.dtbo to /usr/share/rpikernelhack/overlays/adv728x-m.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/akkordion-iqdacplus.dtbo to /usr/share/rpikernelhack/overlays/akkordion-iqdacplus.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/allo-boss-dac-pcm512x-audio.dtbo to /usr/share/rpikernelhack/overlays/allo-boss-dac-pcm512x-audio.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/allo-digione.dtbo to /usr/share/rpikernelhack/overlays/allo-digione.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/allo-katana-dac-audio.dtbo to /usr/share/rpikernelhack/overlays/allo-katana-dac-audio.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/allo-piano-dac-pcm512x-audio.dtbo to /usr/share/rpikernelhack/overlays/allo-piano-dac-pcm512x-audio.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/allo-piano-dac-plus-pcm512x-audio.dtbo to /usr/share/rpikernelhack/overlays/allo-piano-dac-plus-pcm512x-audio.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/applepi-dac.dtbo to /usr/share/rpikernelhack/overlays/applepi-dac.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/at86rf233.dtbo to /usr/share/rpikernelhack/overlays/at86rf233.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/audioinjector-addons.dtbo to /usr/share/rpikernelhack/overlays/audioinjector-addons.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/audioinjector-ultra.dtbo to /usr/share/rpikernelhack/overlays/audioinjector-ultra.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/audioinjector-wm8731-audio.dtbo to /usr/share/rpikernelhack/overlays/audioinjector-wm8731-audio.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/audiosense-pi.dtbo to /usr/share/rpikernelhack/overlays/audiosense-pi.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/audremap.dtbo to /usr/share/rpikernelhack/overlays/audremap.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/balena-fin.dtbo to /usr/share/rpikernelhack/overlays/balena-fin.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/bmp085_i2c-sensor.dtbo to /usr/share/rpikernelhack/overlays/bmp085_i2c-sensor.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/dht11.dtbo to /usr/share/rpikernelhack/overlays/dht11.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/dionaudio-loco-v2.dtbo to /usr/share/rpikernelhack/overlays/dionaudio-loco-v2.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/dionaudio-loco.dtbo to /usr/share/rpikernelhack/overlays/dionaudio-loco.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/disable-bt.dtbo to /usr/share/rpikernelhack/overlays/disable-bt.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/disable-wifi.dtbo to /usr/share/rpikernelhack/overlays/disable-wifi.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/dpi18.dtbo to /usr/share/rpikernelhack/overlays/dpi18.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/dpi24.dtbo to /usr/share/rpikernelhack/overlays/dpi24.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/draws.dtbo to /usr/share/rpikernelhack/overlays/draws.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/dwc-otg.dtbo to /usr/share/rpikernelhack/overlays/dwc-otg.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/dwc2.dtbo to /usr/share/rpikernelhack/overlays/dwc2.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/enc28j60-spi2.dtbo to /usr/share/rpikernelhack/overlays/enc28j60-spi2.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/enc28j60.dtbo to /usr/share/rpikernelhack/overlays/enc28j60.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/exc3000.dtbo to /usr/share/rpikernelhack/overlays/exc3000.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/fe-pi-audio.dtbo to /usr/share/rpikernelhack/overlays/fe-pi-audio.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/goodix.dtbo to /usr/share/rpikernelhack/overlays/goodix.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/googlevoicehat-soundcard.dtbo to /usr/share/rpikernelhack/overlays/googlevoicehat-soundcard.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/gpio-fan.dtbo to /usr/share/rpikernelhack/overlays/gpio-fan.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/gpio-ir-tx.dtbo to /usr/share/rpikernelhack/overlays/gpio-ir-tx.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/gpio-ir.dtbo to /usr/share/rpikernelhack/overlays/gpio-ir.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/gpio-key.dtbo to /usr/share/rpikernelhack/overlays/gpio-key.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/gpio-no-bank0-irq.dtbo to /usr/share/rpikernelhack/overlays/gpio-no-bank0-irq.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/gpio-no-irq.dtbo to /usr/share/rpikernelhack/overlays/gpio-no-irq.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/gpio-poweroff.dtbo to /usr/share/rpikernelhack/overlays/gpio-poweroff.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/gpio-shutdown.dtbo to /usr/share/rpikernelhack/overlays/gpio-shutdown.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/hd44780-lcd.dtbo to /usr/share/rpikernelhack/overlays/hd44780-lcd.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/hifiberry-amp.dtbo to /usr/share/rpikernelhack/overlays/hifiberry-amp.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/hifiberry-dac.dtbo to /usr/share/rpikernelhack/overlays/hifiberry-dac.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/hifiberry-dacplus.dtbo to /usr/share/rpikernelhack/overlays/hifiberry-dacplus.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/hifiberry-dacplusadc.dtbo to /usr/share/rpikernelhack/overlays/hifiberry-dacplusadc.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/hifiberry-digi-pro.dtbo to /usr/share/rpikernelhack/overlays/hifiberry-digi-pro.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/hifiberry-digi.dtbo to /usr/share/rpikernelhack/overlays/hifiberry-digi.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/hy28a.dtbo to /usr/share/rpikernelhack/overlays/hy28a.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/hy28b-2017.dtbo to /usr/share/rpikernelhack/overlays/hy28b-2017.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/hy28b.dtbo to /usr/share/rpikernelhack/overlays/hy28b.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/i-sabre-q2m.dtbo to /usr/share/rpikernelhack/overlays/i-sabre-q2m.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/i2c-bcm2708.dtbo to /usr/share/rpikernelhack/overlays/i2c-bcm2708.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/i2c-gpio.dtbo to /usr/share/rpikernelhack/overlays/i2c-gpio.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/i2c-mux.dtbo to /usr/share/rpikernelhack/overlays/i2c-mux.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/i2c-pwm-pca9685a.dtbo to /usr/share/rpikernelhack/overlays/i2c-pwm-pca9685a.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/i2c-rtc-gpio.dtbo to /usr/share/rpikernelhack/overlays/i2c-rtc-gpio.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/i2c-rtc.dtbo to /usr/share/rpikernelhack/overlays/i2c-rtc.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/i2c-sensor.dtbo to /usr/share/rpikernelhack/overlays/i2c-sensor.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/i2c0-bcm2708.dtbo to /usr/share/rpikernelhack/overlays/i2c0-bcm2708.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/i2c1-bcm2708.dtbo to /usr/share/rpikernelhack/overlays/i2c1-bcm2708.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/i2c3.dtbo to /usr/share/rpikernelhack/overlays/i2c3.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/i2c4.dtbo to /usr/share/rpikernelhack/overlays/i2c4.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/i2c5.dtbo to /usr/share/rpikernelhack/overlays/i2c5.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/i2c6.dtbo to /usr/share/rpikernelhack/overlays/i2c6.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/i2s-gpio28-31.dtbo to /usr/share/rpikernelhack/overlays/i2s-gpio28-31.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/ilitek251x.dtbo to /usr/share/rpikernelhack/overlays/ilitek251x.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/iqaudio-codec.dtbo to /usr/share/rpikernelhack/overlays/iqaudio-codec.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/iqaudio-dac.dtbo to /usr/share/rpikernelhack/overlays/iqaudio-dac.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/iqaudio-dacplus.dtbo to /usr/share/rpikernelhack/overlays/iqaudio-dacplus.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/iqaudio-digi-wm8804-audio.dtbo to /usr/share/rpikernelhack/overlays/iqaudio-digi-wm8804-audio.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/jedec-spi-nor.dtbo to /usr/share/rpikernelhack/overlays/jedec-spi-nor.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/justboom-dac.dtbo to /usr/share/rpikernelhack/overlays/justboom-dac.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/justboom-digi.dtbo to /usr/share/rpikernelhack/overlays/justboom-digi.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/ltc294x.dtbo to /usr/share/rpikernelhack/overlays/ltc294x.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/max98357a.dtbo to /usr/share/rpikernelhack/overlays/max98357a.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/mbed-dac.dtbo to /usr/share/rpikernelhack/overlays/mbed-dac.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/mcp23017.dtbo to /usr/share/rpikernelhack/overlays/mcp23017.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/mcp23s17.dtbo to /usr/share/rpikernelhack/overlays/mcp23s17.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/mcp2515-can0.dtbo to /usr/share/rpikernelhack/overlays/mcp2515-can0.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/mcp2515-can1.dtbo to /usr/share/rpikernelhack/overlays/mcp2515-can1.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/mcp3008.dtbo to /usr/share/rpikernelhack/overlays/mcp3008.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/mcp3202.dtbo to /usr/share/rpikernelhack/overlays/mcp3202.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/mcp342x.dtbo to /usr/share/rpikernelhack/overlays/mcp342x.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/media-center.dtbo to /usr/share/rpikernelhack/overlays/media-center.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/midi-uart0.dtbo to /usr/share/rpikernelhack/overlays/midi-uart0.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/midi-uart1.dtbo to /usr/share/rpikernelhack/overlays/midi-uart1.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/miniuart-bt.dtbo to /usr/share/rpikernelhack/overlays/miniuart-bt.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/mmc.dtbo to /usr/share/rpikernelhack/overlays/mmc.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/mpu6050.dtbo to /usr/share/rpikernelhack/overlays/mpu6050.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/mz61581.dtbo to /usr/share/rpikernelhack/overlays/mz61581.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/ov5647.dtbo to /usr/share/rpikernelhack/overlays/ov5647.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/papirus.dtbo to /usr/share/rpikernelhack/overlays/papirus.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/pi3-act-led.dtbo to /usr/share/rpikernelhack/overlays/pi3-act-led.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/pi3-disable-bt.dtbo to /usr/share/rpikernelhack/overlays/pi3-disable-bt.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/pi3-disable-wifi.dtbo to /usr/share/rpikernelhack/overlays/pi3-disable-wifi.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/pi3-miniuart-bt.dtbo to /usr/share/rpikernelhack/overlays/pi3-miniuart-bt.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/pibell.dtbo to /usr/share/rpikernelhack/overlays/pibell.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/piglow.dtbo to /usr/share/rpikernelhack/overlays/piglow.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/piscreen.dtbo to /usr/share/rpikernelhack/overlays/piscreen.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/piscreen2r.dtbo to /usr/share/rpikernelhack/overlays/piscreen2r.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/pisound.dtbo to /usr/share/rpikernelhack/overlays/pisound.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/pitft22.dtbo to /usr/share/rpikernelhack/overlays/pitft22.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/pitft28-capacitive.dtbo to /usr/share/rpikernelhack/overlays/pitft28-capacitive.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/pitft28-resistive.dtbo to /usr/share/rpikernelhack/overlays/pitft28-resistive.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/pitft35-resistive.dtbo to /usr/share/rpikernelhack/overlays/pitft35-resistive.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/pps-gpio.dtbo to /usr/share/rpikernelhack/overlays/pps-gpio.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/pwm-2chan.dtbo to /usr/share/rpikernelhack/overlays/pwm-2chan.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/pwm-ir-tx.dtbo to /usr/share/rpikernelhack/overlays/pwm-ir-tx.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/pwm.dtbo to /usr/share/rpikernelhack/overlays/pwm.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/qca7000.dtbo to /usr/share/rpikernelhack/overlays/qca7000.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/rotary-encoder.dtbo to /usr/share/rpikernelhack/overlays/rotary-encoder.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/rpi-backlight.dtbo to /usr/share/rpikernelhack/overlays/rpi-backlight.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/rpi-cirrus-wm5102.dtbo to /usr/share/rpikernelhack/overlays/rpi-cirrus-wm5102.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/rpi-dac.dtbo to /usr/share/rpikernelhack/overlays/rpi-dac.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/rpi-display.dtbo to /usr/share/rpikernelhack/overlays/rpi-display.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/rpi-ft5406.dtbo to /usr/share/rpikernelhack/overlays/rpi-ft5406.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/rpi-poe.dtbo to /usr/share/rpikernelhack/overlays/rpi-poe.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/rpi-proto.dtbo to /usr/share/rpikernelhack/overlays/rpi-proto.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/rpi-sense.dtbo to /usr/share/rpikernelhack/overlays/rpi-sense.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/rpi-tv.dtbo to /usr/share/rpikernelhack/overlays/rpi-tv.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/rra-digidac1-wm8741-audio.dtbo to /usr/share/rpikernelhack/overlays/rra-digidac1-wm8741-audio.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/sc16is750-i2c.dtbo to /usr/share/rpikernelhack/overlays/sc16is750-i2c.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/sc16is752-i2c.dtbo to /usr/share/rpikernelhack/overlays/sc16is752-i2c.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/sc16is752-spi1.dtbo to /usr/share/rpikernelhack/overlays/sc16is752-spi1.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/sdhost.dtbo to /usr/share/rpikernelhack/overlays/sdhost.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/sdio.dtbo to /usr/share/rpikernelhack/overlays/sdio.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/sdtweak.dtbo to /usr/share/rpikernelhack/overlays/sdtweak.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/smi-dev.dtbo to /usr/share/rpikernelhack/overlays/smi-dev.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/smi-nand.dtbo to /usr/share/rpikernelhack/overlays/smi-nand.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/smi.dtbo to /usr/share/rpikernelhack/overlays/smi.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/spi-gpio35-39.dtbo to /usr/share/rpikernelhack/overlays/spi-gpio35-39.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/spi-gpio40-45.dtbo to /usr/share/rpikernelhack/overlays/spi-gpio40-45.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/spi-rtc.dtbo to /usr/share/rpikernelhack/overlays/spi-rtc.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/spi0-cs.dtbo to /usr/share/rpikernelhack/overlays/spi0-cs.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/spi0-hw-cs.dtbo to /usr/share/rpikernelhack/overlays/spi0-hw-cs.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/spi1-1cs.dtbo to /usr/share/rpikernelhack/overlays/spi1-1cs.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/spi1-2cs.dtbo to /usr/share/rpikernelhack/overlays/spi1-2cs.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/spi1-3cs.dtbo to /usr/share/rpikernelhack/overlays/spi1-3cs.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/spi2-1cs.dtbo to /usr/share/rpikernelhack/overlays/spi2-1cs.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/spi2-2cs.dtbo to /usr/share/rpikernelhack/overlays/spi2-2cs.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/spi2-3cs.dtbo to /usr/share/rpikernelhack/overlays/spi2-3cs.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/spi3-1cs.dtbo to /usr/share/rpikernelhack/overlays/spi3-1cs.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/spi3-2cs.dtbo to /usr/share/rpikernelhack/overlays/spi3-2cs.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/spi4-1cs.dtbo to /usr/share/rpikernelhack/overlays/spi4-1cs.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/spi4-2cs.dtbo to /usr/share/rpikernelhack/overlays/spi4-2cs.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/spi5-1cs.dtbo to /usr/share/rpikernelhack/overlays/spi5-1cs.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/spi5-2cs.dtbo to /usr/share/rpikernelhack/overlays/spi5-2cs.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/spi6-1cs.dtbo to /usr/share/rpikernelhack/overlays/spi6-1cs.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/spi6-2cs.dtbo to /usr/share/rpikernelhack/overlays/spi6-2cs.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/ssd1306.dtbo to /usr/share/rpikernelhack/overlays/ssd1306.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/superaudioboard.dtbo to /usr/share/rpikernelhack/overlays/superaudioboard.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/sx150x.dtbo to /usr/share/rpikernelhack/overlays/sx150x.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/tc358743-audio.dtbo to /usr/share/rpikernelhack/overlays/tc358743-audio.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/tc358743.dtbo to /usr/share/rpikernelhack/overlays/tc358743.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/tinylcd35.dtbo to /usr/share/rpikernelhack/overlays/tinylcd35.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/tpm-slb9670.dtbo to /usr/share/rpikernelhack/overlays/tpm-slb9670.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/uart0.dtbo to /usr/share/rpikernelhack/overlays/uart0.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/uart1.dtbo to /usr/share/rpikernelhack/overlays/uart1.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/uart2.dtbo to /usr/share/rpikernelhack/overlays/uart2.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/uart3.dtbo to /usr/share/rpikernelhack/overlays/uart3.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/uart4.dtbo to /usr/share/rpikernelhack/overlays/uart4.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/uart5.dtbo to /usr/share/rpikernelhack/overlays/uart5.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/udrc.dtbo to /usr/share/rpikernelhack/overlays/udrc.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/upstream.dtbo to /usr/share/rpikernelhack/overlays/upstream.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/vc4-fkms-v3d.dtbo to /usr/share/rpikernelhack/overlays/vc4-fkms-v3d.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/vc4-kms-kippah-7inch.dtbo to /usr/share/rpikernelhack/overlays/vc4-kms-kippah-7inch.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/vc4-kms-v3d.dtbo to /usr/share/rpikernelhack/overlays/vc4-kms-v3d.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/vga666.dtbo to /usr/share/rpikernelhack/overlays/vga666.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/w1-gpio-pullup.dtbo to /usr/share/rpikernelhack/overlays/w1-gpio-pullup.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/w1-gpio.dtbo to /usr/share/rpikernelhack/overlays/w1-gpio.dtbo by rpikernelhack'
+Adding 'diversion of /boot/overlays/wittypi.dtbo to /usr/share/rpikernelhack/overlays/wittypi.dtbo by rpikernelhack'
+Unpacking raspberrypi-kernel (1.20190718-1) over (1.20190709-1) ...
+Preparing to unpack .../3-libraspberrypi-bin_1.20190718-1_armhf.deb ...
+Unpacking libraspberrypi-bin (1.20190718-1) over (1.20190709-1) ...
+Preparing to unpack .../4-libraspberrypi0_1.20190718-1_armhf.deb ...
+Unpacking libraspberrypi0 (1.20190718-1) over (1.20190709-1) ...
+Preparing to unpack .../5-raspberrypi-bootloader_1.20190718-1_armhf.deb ...
+Adding 'diversion of /boot/start.elf to /usr/share/rpikernelhack/start.elf by rpikernelhack'
+Adding 'diversion of /boot/start4.elf to /usr/share/rpikernelhack/start4.elf by rpikernelhack'
+Adding 'diversion of /boot/start4cd.elf to /usr/share/rpikernelhack/start4cd.elf by rpikernelhack'
+Adding 'diversion of /boot/start4db.elf to /usr/share/rpikernelhack/start4db.elf by rpikernelhack'
+Adding 'diversion of /boot/start4x.elf to /usr/share/rpikernelhack/start4x.elf by rpikernelhack'
+Adding 'diversion of /boot/start_cd.elf to /usr/share/rpikernelhack/start_cd.elf by rpikernelhack'
+Adding 'diversion of /boot/start_db.elf to /usr/share/rpikernelhack/start_db.elf by rpikernelhack'
+Adding 'diversion of /boot/start_x.elf to /usr/share/rpikernelhack/start_x.elf by rpikernelhack'
+Adding 'diversion of /boot/fixup.dat to /usr/share/rpikernelhack/fixup.dat by rpikernelhack'
+Adding 'diversion of /boot/fixup4.dat to /usr/share/rpikernelhack/fixup4.dat by rpikernelhack'
+Adding 'diversion of /boot/fixup4cd.dat to /usr/share/rpikernelhack/fixup4cd.dat by rpikernelhack'
+Adding 'diversion of /boot/fixup4db.dat to /usr/share/rpikernelhack/fixup4db.dat by rpikernelhack'
+Adding 'diversion of /boot/fixup4x.dat to /usr/share/rpikernelhack/fixup4x.dat by rpikernelhack'
+Adding 'diversion of /boot/fixup_cd.dat to /usr/share/rpikernelhack/fixup_cd.dat by rpikernelhack'
+Adding 'diversion of /boot/fixup_db.dat to /usr/share/rpikernelhack/fixup_db.dat by rpikernelhack'
+Adding 'diversion of /boot/fixup_x.dat to /usr/share/rpikernelhack/fixup_x.dat by rpikernelhack'
+Adding 'diversion of /boot/bootcode.bin to /usr/share/rpikernelhack/bootcode.bin by rpikernelhack'
+Adding 'diversion of /boot/LICENCE.broadcom to /usr/share/rpikernelhack/LICENCE.broadcom by rpikernelhack'
+Unpacking raspberrypi-bootloader (1.20190718-1) over (1.20190709-1) ...
+Preparing to unpack .../6-patch_2.7.6-3+deb10u1_armhf.deb ...
+Unpacking patch (2.7.6-3+deb10u1) over (2.7.6-3) ...
+Preparing to unpack .../7-raspberrypi-sys-mods_20190722_armhf.deb ...
+Unpacking raspberrypi-sys-mods (20190722) over (20190429) ...
+Preparing to unpack .../8-python-rpi.gpio_0.7.0~buster-1_armhf.deb ...
+Unpacking python-rpi.gpio (0.7.0~buster-1) over (0.6.5-1) ...
+Preparing to unpack .../9-raspberrypi-net-mods_1.3.0_all.deb ...
+Unpacking raspberrypi-net-mods (1.3.0) over (1.2.8) ...
+Setting up raspberrypi-sys-mods (20190722) ...
+Installing new version of config file /etc/udev/rules.d/99-com.rules ...
+Setting up raspberrypi-kernel (1.20190718-1) ...
+Removing 'diversion of /boot/bcm2708-rpi-b-plus.dtb to /usr/share/rpikernelhack/bcm2708-rpi-b-plus.dtb by rpikernelhack'
+Removing 'diversion of /boot/bcm2708-rpi-b.dtb to /usr/share/rpikernelhack/bcm2708-rpi-b.dtb by rpikernelhack'
+Removing 'diversion of /boot/bcm2708-rpi-cm.dtb to /usr/share/rpikernelhack/bcm2708-rpi-cm.dtb by rpikernelhack'
+Removing 'diversion of /boot/bcm2708-rpi-zero-w.dtb to /usr/share/rpikernelhack/bcm2708-rpi-zero-w.dtb by rpikernelhack'
+Removing 'diversion of /boot/bcm2708-rpi-zero.dtb to /usr/share/rpikernelhack/bcm2708-rpi-zero.dtb by rpikernelhack'
+Removing 'diversion of /boot/bcm2709-rpi-2-b.dtb to /usr/share/rpikernelhack/bcm2709-rpi-2-b.dtb by rpikernelhack'
+Removing 'diversion of /boot/bcm2710-rpi-3-b-plus.dtb to /usr/share/rpikernelhack/bcm2710-rpi-3-b-plus.dtb by rpikernelhack'
+Removing 'diversion of /boot/bcm2710-rpi-3-b.dtb to /usr/share/rpikernelhack/bcm2710-rpi-3-b.dtb by rpikernelhack'
+Removing 'diversion of /boot/bcm2710-rpi-cm3.dtb to /usr/share/rpikernelhack/bcm2710-rpi-cm3.dtb by rpikernelhack'
+Removing 'diversion of /boot/bcm2711-rpi-4-b.dtb to /usr/share/rpikernelhack/bcm2711-rpi-4-b.dtb by rpikernelhack'
+Removing 'diversion of /boot/kernel.img to /usr/share/rpikernelhack/kernel.img by rpikernelhack'
+Removing 'diversion of /boot/kernel7.img to /usr/share/rpikernelhack/kernel7.img by rpikernelhack'
+Removing 'diversion of /boot/kernel7l.img to /usr/share/rpikernelhack/kernel7l.img by rpikernelhack'
+Removing 'diversion of /boot/COPYING.linux to /usr/share/rpikernelhack/COPYING.linux by rpikernelhack'
+Removing 'diversion of /boot/overlays/README to /usr/share/rpikernelhack/overlays/README by rpikernelhack'
+Removing 'diversion of /boot/overlays/act-led.dtbo to /usr/share/rpikernelhack/overlays/act-led.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/adau1977-adc.dtbo to /usr/share/rpikernelhack/overlays/adau1977-adc.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/adau7002-simple.dtbo to /usr/share/rpikernelhack/overlays/adau7002-simple.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/ads1015.dtbo to /usr/share/rpikernelhack/overlays/ads1015.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/ads1115.dtbo to /usr/share/rpikernelhack/overlays/ads1115.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/ads7846.dtbo to /usr/share/rpikernelhack/overlays/ads7846.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/adv7282m.dtbo to /usr/share/rpikernelhack/overlays/adv7282m.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/adv728x-m.dtbo to /usr/share/rpikernelhack/overlays/adv728x-m.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/akkordion-iqdacplus.dtbo to /usr/share/rpikernelhack/overlays/akkordion-iqdacplus.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/allo-boss-dac-pcm512x-audio.dtbo to /usr/share/rpikernelhack/overlays/allo-boss-dac-pcm512x-audio.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/allo-digione.dtbo to /usr/share/rpikernelhack/overlays/allo-digione.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/allo-katana-dac-audio.dtbo to /usr/share/rpikernelhack/overlays/allo-katana-dac-audio.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/allo-piano-dac-pcm512x-audio.dtbo to /usr/share/rpikernelhack/overlays/allo-piano-dac-pcm512x-audio.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/allo-piano-dac-plus-pcm512x-audio.dtbo to /usr/share/rpikernelhack/overlays/allo-piano-dac-plus-pcm512x-audio.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/applepi-dac.dtbo to /usr/share/rpikernelhack/overlays/applepi-dac.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/at86rf233.dtbo to /usr/share/rpikernelhack/overlays/at86rf233.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/audioinjector-addons.dtbo to /usr/share/rpikernelhack/overlays/audioinjector-addons.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/audioinjector-ultra.dtbo to /usr/share/rpikernelhack/overlays/audioinjector-ultra.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/audioinjector-wm8731-audio.dtbo to /usr/share/rpikernelhack/overlays/audioinjector-wm8731-audio.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/audiosense-pi.dtbo to /usr/share/rpikernelhack/overlays/audiosense-pi.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/audremap.dtbo to /usr/share/rpikernelhack/overlays/audremap.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/balena-fin.dtbo to /usr/share/rpikernelhack/overlays/balena-fin.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/bmp085_i2c-sensor.dtbo to /usr/share/rpikernelhack/overlays/bmp085_i2c-sensor.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/dht11.dtbo to /usr/share/rpikernelhack/overlays/dht11.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/dionaudio-loco-v2.dtbo to /usr/share/rpikernelhack/overlays/dionaudio-loco-v2.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/dionaudio-loco.dtbo to /usr/share/rpikernelhack/overlays/dionaudio-loco.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/disable-bt.dtbo to /usr/share/rpikernelhack/overlays/disable-bt.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/disable-wifi.dtbo to /usr/share/rpikernelhack/overlays/disable-wifi.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/dpi18.dtbo to /usr/share/rpikernelhack/overlays/dpi18.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/dpi24.dtbo to /usr/share/rpikernelhack/overlays/dpi24.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/draws.dtbo to /usr/share/rpikernelhack/overlays/draws.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/dwc-otg.dtbo to /usr/share/rpikernelhack/overlays/dwc-otg.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/dwc2.dtbo to /usr/share/rpikernelhack/overlays/dwc2.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/enc28j60-spi2.dtbo to /usr/share/rpikernelhack/overlays/enc28j60-spi2.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/enc28j60.dtbo to /usr/share/rpikernelhack/overlays/enc28j60.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/exc3000.dtbo to /usr/share/rpikernelhack/overlays/exc3000.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/fe-pi-audio.dtbo to /usr/share/rpikernelhack/overlays/fe-pi-audio.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/goodix.dtbo to /usr/share/rpikernelhack/overlays/goodix.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/googlevoicehat-soundcard.dtbo to /usr/share/rpikernelhack/overlays/googlevoicehat-soundcard.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/gpio-fan.dtbo to /usr/share/rpikernelhack/overlays/gpio-fan.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/gpio-ir-tx.dtbo to /usr/share/rpikernelhack/overlays/gpio-ir-tx.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/gpio-ir.dtbo to /usr/share/rpikernelhack/overlays/gpio-ir.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/gpio-key.dtbo to /usr/share/rpikernelhack/overlays/gpio-key.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/gpio-no-bank0-irq.dtbo to /usr/share/rpikernelhack/overlays/gpio-no-bank0-irq.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/gpio-no-irq.dtbo to /usr/share/rpikernelhack/overlays/gpio-no-irq.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/gpio-poweroff.dtbo to /usr/share/rpikernelhack/overlays/gpio-poweroff.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/gpio-shutdown.dtbo to /usr/share/rpikernelhack/overlays/gpio-shutdown.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/hd44780-lcd.dtbo to /usr/share/rpikernelhack/overlays/hd44780-lcd.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/hifiberry-amp.dtbo to /usr/share/rpikernelhack/overlays/hifiberry-amp.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/hifiberry-dac.dtbo to /usr/share/rpikernelhack/overlays/hifiberry-dac.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/hifiberry-dacplus.dtbo to /usr/share/rpikernelhack/overlays/hifiberry-dacplus.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/hifiberry-dacplusadc.dtbo to /usr/share/rpikernelhack/overlays/hifiberry-dacplusadc.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/hifiberry-digi-pro.dtbo to /usr/share/rpikernelhack/overlays/hifiberry-digi-pro.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/hifiberry-digi.dtbo to /usr/share/rpikernelhack/overlays/hifiberry-digi.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/hy28a.dtbo to /usr/share/rpikernelhack/overlays/hy28a.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/hy28b-2017.dtbo to /usr/share/rpikernelhack/overlays/hy28b-2017.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/hy28b.dtbo to /usr/share/rpikernelhack/overlays/hy28b.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/i-sabre-q2m.dtbo to /usr/share/rpikernelhack/overlays/i-sabre-q2m.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/i2c-bcm2708.dtbo to /usr/share/rpikernelhack/overlays/i2c-bcm2708.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/i2c-gpio.dtbo to /usr/share/rpikernelhack/overlays/i2c-gpio.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/i2c-mux.dtbo to /usr/share/rpikernelhack/overlays/i2c-mux.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/i2c-pwm-pca9685a.dtbo to /usr/share/rpikernelhack/overlays/i2c-pwm-pca9685a.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/i2c-rtc-gpio.dtbo to /usr/share/rpikernelhack/overlays/i2c-rtc-gpio.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/i2c-rtc.dtbo to /usr/share/rpikernelhack/overlays/i2c-rtc.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/i2c-sensor.dtbo to /usr/share/rpikernelhack/overlays/i2c-sensor.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/i2c0-bcm2708.dtbo to /usr/share/rpikernelhack/overlays/i2c0-bcm2708.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/i2c1-bcm2708.dtbo to /usr/share/rpikernelhack/overlays/i2c1-bcm2708.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/i2c3.dtbo to /usr/share/rpikernelhack/overlays/i2c3.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/i2c4.dtbo to /usr/share/rpikernelhack/overlays/i2c4.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/i2c5.dtbo to /usr/share/rpikernelhack/overlays/i2c5.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/i2c6.dtbo to /usr/share/rpikernelhack/overlays/i2c6.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/i2s-gpio28-31.dtbo to /usr/share/rpikernelhack/overlays/i2s-gpio28-31.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/ilitek251x.dtbo to /usr/share/rpikernelhack/overlays/ilitek251x.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/iqaudio-codec.dtbo to /usr/share/rpikernelhack/overlays/iqaudio-codec.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/iqaudio-dac.dtbo to /usr/share/rpikernelhack/overlays/iqaudio-dac.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/iqaudio-dacplus.dtbo to /usr/share/rpikernelhack/overlays/iqaudio-dacplus.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/iqaudio-digi-wm8804-audio.dtbo to /usr/share/rpikernelhack/overlays/iqaudio-digi-wm8804-audio.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/jedec-spi-nor.dtbo to /usr/share/rpikernelhack/overlays/jedec-spi-nor.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/justboom-dac.dtbo to /usr/share/rpikernelhack/overlays/justboom-dac.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/justboom-digi.dtbo to /usr/share/rpikernelhack/overlays/justboom-digi.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/ltc294x.dtbo to /usr/share/rpikernelhack/overlays/ltc294x.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/max98357a.dtbo to /usr/share/rpikernelhack/overlays/max98357a.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/mbed-dac.dtbo to /usr/share/rpikernelhack/overlays/mbed-dac.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/mcp23017.dtbo to /usr/share/rpikernelhack/overlays/mcp23017.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/mcp23s17.dtbo to /usr/share/rpikernelhack/overlays/mcp23s17.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/mcp2515-can0.dtbo to /usr/share/rpikernelhack/overlays/mcp2515-can0.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/mcp2515-can1.dtbo to /usr/share/rpikernelhack/overlays/mcp2515-can1.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/mcp3008.dtbo to /usr/share/rpikernelhack/overlays/mcp3008.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/mcp3202.dtbo to /usr/share/rpikernelhack/overlays/mcp3202.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/mcp342x.dtbo to /usr/share/rpikernelhack/overlays/mcp342x.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/media-center.dtbo to /usr/share/rpikernelhack/overlays/media-center.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/midi-uart0.dtbo to /usr/share/rpikernelhack/overlays/midi-uart0.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/midi-uart1.dtbo to /usr/share/rpikernelhack/overlays/midi-uart1.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/miniuart-bt.dtbo to /usr/share/rpikernelhack/overlays/miniuart-bt.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/mmc.dtbo to /usr/share/rpikernelhack/overlays/mmc.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/mpu6050.dtbo to /usr/share/rpikernelhack/overlays/mpu6050.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/mz61581.dtbo to /usr/share/rpikernelhack/overlays/mz61581.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/ov5647.dtbo to /usr/share/rpikernelhack/overlays/ov5647.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/papirus.dtbo to /usr/share/rpikernelhack/overlays/papirus.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/pi3-act-led.dtbo to /usr/share/rpikernelhack/overlays/pi3-act-led.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/pi3-disable-bt.dtbo to /usr/share/rpikernelhack/overlays/pi3-disable-bt.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/pi3-disable-wifi.dtbo to /usr/share/rpikernelhack/overlays/pi3-disable-wifi.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/pi3-miniuart-bt.dtbo to /usr/share/rpikernelhack/overlays/pi3-miniuart-bt.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/pibell.dtbo to /usr/share/rpikernelhack/overlays/pibell.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/piglow.dtbo to /usr/share/rpikernelhack/overlays/piglow.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/piscreen.dtbo to /usr/share/rpikernelhack/overlays/piscreen.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/piscreen2r.dtbo to /usr/share/rpikernelhack/overlays/piscreen2r.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/pisound.dtbo to /usr/share/rpikernelhack/overlays/pisound.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/pitft22.dtbo to /usr/share/rpikernelhack/overlays/pitft22.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/pitft28-capacitive.dtbo to /usr/share/rpikernelhack/overlays/pitft28-capacitive.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/pitft28-resistive.dtbo to /usr/share/rpikernelhack/overlays/pitft28-resistive.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/pitft35-resistive.dtbo to /usr/share/rpikernelhack/overlays/pitft35-resistive.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/pps-gpio.dtbo to /usr/share/rpikernelhack/overlays/pps-gpio.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/pwm-2chan.dtbo to /usr/share/rpikernelhack/overlays/pwm-2chan.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/pwm-ir-tx.dtbo to /usr/share/rpikernelhack/overlays/pwm-ir-tx.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/pwm.dtbo to /usr/share/rpikernelhack/overlays/pwm.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/qca7000.dtbo to /usr/share/rpikernelhack/overlays/qca7000.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/rotary-encoder.dtbo to /usr/share/rpikernelhack/overlays/rotary-encoder.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/rpi-backlight.dtbo to /usr/share/rpikernelhack/overlays/rpi-backlight.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/rpi-cirrus-wm5102.dtbo to /usr/share/rpikernelhack/overlays/rpi-cirrus-wm5102.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/rpi-dac.dtbo to /usr/share/rpikernelhack/overlays/rpi-dac.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/rpi-display.dtbo to /usr/share/rpikernelhack/overlays/rpi-display.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/rpi-ft5406.dtbo to /usr/share/rpikernelhack/overlays/rpi-ft5406.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/rpi-poe.dtbo to /usr/share/rpikernelhack/overlays/rpi-poe.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/rpi-proto.dtbo to /usr/share/rpikernelhack/overlays/rpi-proto.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/rpi-sense.dtbo to /usr/share/rpikernelhack/overlays/rpi-sense.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/rpi-tv.dtbo to /usr/share/rpikernelhack/overlays/rpi-tv.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/rra-digidac1-wm8741-audio.dtbo to /usr/share/rpikernelhack/overlays/rra-digidac1-wm8741-audio.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/sc16is750-i2c.dtbo to /usr/share/rpikernelhack/overlays/sc16is750-i2c.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/sc16is752-i2c.dtbo to /usr/share/rpikernelhack/overlays/sc16is752-i2c.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/sc16is752-spi1.dtbo to /usr/share/rpikernelhack/overlays/sc16is752-spi1.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/sdhost.dtbo to /usr/share/rpikernelhack/overlays/sdhost.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/sdio.dtbo to /usr/share/rpikernelhack/overlays/sdio.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/sdtweak.dtbo to /usr/share/rpikernelhack/overlays/sdtweak.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/smi-dev.dtbo to /usr/share/rpikernelhack/overlays/smi-dev.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/smi-nand.dtbo to /usr/share/rpikernelhack/overlays/smi-nand.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/smi.dtbo to /usr/share/rpikernelhack/overlays/smi.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/spi-gpio35-39.dtbo to /usr/share/rpikernelhack/overlays/spi-gpio35-39.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/spi-gpio40-45.dtbo to /usr/share/rpikernelhack/overlays/spi-gpio40-45.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/spi-rtc.dtbo to /usr/share/rpikernelhack/overlays/spi-rtc.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/spi0-cs.dtbo to /usr/share/rpikernelhack/overlays/spi0-cs.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/spi0-hw-cs.dtbo to /usr/share/rpikernelhack/overlays/spi0-hw-cs.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/spi1-1cs.dtbo to /usr/share/rpikernelhack/overlays/spi1-1cs.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/spi1-2cs.dtbo to /usr/share/rpikernelhack/overlays/spi1-2cs.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/spi1-3cs.dtbo to /usr/share/rpikernelhack/overlays/spi1-3cs.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/spi2-1cs.dtbo to /usr/share/rpikernelhack/overlays/spi2-1cs.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/spi2-2cs.dtbo to /usr/share/rpikernelhack/overlays/spi2-2cs.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/spi2-3cs.dtbo to /usr/share/rpikernelhack/overlays/spi2-3cs.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/spi3-1cs.dtbo to /usr/share/rpikernelhack/overlays/spi3-1cs.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/spi3-2cs.dtbo to /usr/share/rpikernelhack/overlays/spi3-2cs.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/spi4-1cs.dtbo to /usr/share/rpikernelhack/overlays/spi4-1cs.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/spi4-2cs.dtbo to /usr/share/rpikernelhack/overlays/spi4-2cs.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/spi5-1cs.dtbo to /usr/share/rpikernelhack/overlays/spi5-1cs.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/spi5-2cs.dtbo to /usr/share/rpikernelhack/overlays/spi5-2cs.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/spi6-1cs.dtbo to /usr/share/rpikernelhack/overlays/spi6-1cs.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/spi6-2cs.dtbo to /usr/share/rpikernelhack/overlays/spi6-2cs.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/ssd1306.dtbo to /usr/share/rpikernelhack/overlays/ssd1306.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/superaudioboard.dtbo to /usr/share/rpikernelhack/overlays/superaudioboard.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/sx150x.dtbo to /usr/share/rpikernelhack/overlays/sx150x.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/tc358743-audio.dtbo to /usr/share/rpikernelhack/overlays/tc358743-audio.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/tc358743.dtbo to /usr/share/rpikernelhack/overlays/tc358743.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/tinylcd35.dtbo to /usr/share/rpikernelhack/overlays/tinylcd35.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/tpm-slb9670.dtbo to /usr/share/rpikernelhack/overlays/tpm-slb9670.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/uart0.dtbo to /usr/share/rpikernelhack/overlays/uart0.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/uart1.dtbo to /usr/share/rpikernelhack/overlays/uart1.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/uart2.dtbo to /usr/share/rpikernelhack/overlays/uart2.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/uart3.dtbo to /usr/share/rpikernelhack/overlays/uart3.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/uart4.dtbo to /usr/share/rpikernelhack/overlays/uart4.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/uart5.dtbo to /usr/share/rpikernelhack/overlays/uart5.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/udrc.dtbo to /usr/share/rpikernelhack/overlays/udrc.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/upstream.dtbo to /usr/share/rpikernelhack/overlays/upstream.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/vc4-fkms-v3d.dtbo to /usr/share/rpikernelhack/overlays/vc4-fkms-v3d.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/vc4-kms-kippah-7inch.dtbo to /usr/share/rpikernelhack/overlays/vc4-kms-kippah-7inch.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/vc4-kms-v3d.dtbo to /usr/share/rpikernelhack/overlays/vc4-kms-v3d.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/vga666.dtbo to /usr/share/rpikernelhack/overlays/vga666.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/w1-gpio-pullup.dtbo to /usr/share/rpikernelhack/overlays/w1-gpio-pullup.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/w1-gpio.dtbo to /usr/share/rpikernelhack/overlays/w1-gpio.dtbo by rpikernelhack'
+Removing 'diversion of /boot/overlays/wittypi.dtbo to /usr/share/rpikernelhack/overlays/wittypi.dtbo by rpikernelhack'
+run-parts: executing /etc/kernel/postinst.d/apt-auto-removal 4.19.58+ /boot/kernel.img
+run-parts: executing /etc/kernel/postinst.d/apt-auto-removal 4.19.58-v7+ /boot/kernel7.img
+run-parts: executing /etc/kernel/postinst.d/apt-auto-removal 4.19.58-v7l+ /boot/kernel7l.img
+Setting up patch (2.7.6-3+deb10u1) ...
+Setting up raspberrypi-bootloader (1.20190718-1) ...
+Removing 'diversion of /boot/start.elf to /usr/share/rpikernelhack/start.elf by rpikernelhack'
+Removing 'diversion of /boot/start4.elf to /usr/share/rpikernelhack/start4.elf by rpikernelhack'
+Removing 'diversion of /boot/start4cd.elf to /usr/share/rpikernelhack/start4cd.elf by rpikernelhack'
+Removing 'diversion of /boot/start4db.elf to /usr/share/rpikernelhack/start4db.elf by rpikernelhack'
+Removing 'diversion of /boot/start4x.elf to /usr/share/rpikernelhack/start4x.elf by rpikernelhack'
+Removing 'diversion of /boot/start_cd.elf to /usr/share/rpikernelhack/start_cd.elf by rpikernelhack'
+Removing 'diversion of /boot/start_db.elf to /usr/share/rpikernelhack/start_db.elf by rpikernelhack'
+Removing 'diversion of /boot/start_x.elf to /usr/share/rpikernelhack/start_x.elf by rpikernelhack'
+Removing 'diversion of /boot/fixup.dat to /usr/share/rpikernelhack/fixup.dat by rpikernelhack'
+Removing 'diversion of /boot/fixup4.dat to /usr/share/rpikernelhack/fixup4.dat by rpikernelhack'
+Removing 'diversion of /boot/fixup4cd.dat to /usr/share/rpikernelhack/fixup4cd.dat by rpikernelhack'
+Removing 'diversion of /boot/fixup4db.dat to /usr/share/rpikernelhack/fixup4db.dat by rpikernelhack'
+Removing 'diversion of /boot/fixup4x.dat to /usr/share/rpikernelhack/fixup4x.dat by rpikernelhack'
+Removing 'diversion of /boot/fixup_cd.dat to /usr/share/rpikernelhack/fixup_cd.dat by rpikernelhack'
+Removing 'diversion of /boot/fixup_db.dat to /usr/share/rpikernelhack/fixup_db.dat by rpikernelhack'
+Removing 'diversion of /boot/fixup_x.dat to /usr/share/rpikernelhack/fixup_x.dat by rpikernelhack'
+Removing 'diversion of /boot/bootcode.bin to /usr/share/rpikernelhack/bootcode.bin by rpikernelhack'
+Removing 'diversion of /boot/LICENCE.broadcom to /usr/share/rpikernelhack/LICENCE.broadcom by rpikernelhack'
+Setting up raspberrypi-net-mods (1.3.0) ...
+Installing new version of config file /etc/profile.d/wifi-check.sh ...
+Setting up libraspberrypi0 (1.20190718-1) ...
+Setting up python-rpi.gpio (0.7.0~buster-1) ...
+Setting up libraspberrypi-doc (1.20190718-1) ...
+Setting up libraspberrypi-bin (1.20190718-1) ...
+Setting up libraspberrypi-dev (1.20190718-1) ...
+Processing triggers for man-db (2.8.5-2) ...
+All done.

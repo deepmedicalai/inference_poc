@@ -1,0 +1,1373 @@
+{
+	"info": {
+		"_postman_id": "4057116f-3633-48a3-8b49-ef04b83199e9",
+		"name": "main server sandbox",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "pig all",
+			"item": [
+				{
+					"name": "EDGE: send status update 84653168.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653168.dcm\", \n\t\"file_path\":\"./84653168.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653179.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653179.dcm\", \n\t\"file_path\":\"./84653179.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653190.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653190.dcm\", \n\t\"file_path\":\"./84653190.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653201.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653201.dcm\", \n\t\"file_path\":\"./84653201.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653212.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653212.dcm\", \n\t\"file_path\":\"./84653212.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653223.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653223.dcm\", \n\t\"file_path\":\"./84653223.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653234.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653234.dcm\", \n\t\"file_path\":\"./84653234.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653245.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653245.dcm\", \n\t\"file_path\":\"./84653245.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653256.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653256.dcm\", \n\t\"file_path\":\"./84653256.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653267.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653267.dcm\", \n\t\"file_path\":\"./84653267.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653278.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653278.dcm\", \n\t\"file_path\":\"./84653278.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653289.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653289.dcm\", \n\t\"file_path\":\"./84653289.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653300.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653300.dcm\", \n\t\"file_path\":\"./84653300.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653311.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653311.dcm\", \n\t\"file_path\":\"./84653311.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653322.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653322.dcm\", \n\t\"file_path\":\"./84653322.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653333.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653333.dcm\", \n\t\"file_path\":\"./84653333.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653344.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653344.dcm\", \n\t\"file_path\":\"./84653344.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653355.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653355.dcm\", \n\t\"file_path\":\"./84653355.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653366.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653366.dcm\", \n\t\"file_path\":\"./84653366.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653377.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653377.dcm\", \n\t\"file_path\":\"./84653377.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653388.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653388.dcm\", \n\t\"file_path\":\"./84653388.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653399.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653399.dcm\", \n\t\"file_path\":\"./84653399.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653410.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653410.dcm\", \n\t\"file_path\":\"./84653410.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653421.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653421.dcm\", \n\t\"file_path\":\"./84653421.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653432.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653432.dcm\", \n\t\"file_path\":\"./84653432.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653443.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653443.dcm\", \n\t\"file_path\":\"./84653443.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653454.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653454.dcm\", \n\t\"file_path\":\"./84653454.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653465.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653465.dcm\", \n\t\"file_path\":\"./84653465.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDGE: send status update 84653476.dcm",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "edge0001-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"file_name\":\"84653476.dcm\", \n\t\"file_path\":\"./84653476.dcm\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"edge",
+								"statusupdate",
+								"{{session_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API: health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API: Start Session",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "07710ccd-91f1-46f9-9ba6-8a465e6cbe5c",
+						"exec": [
+							"",
+							"pm.test(\"Get session id\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"session_id\", jsonData.session_id);",
+							"    pm.expect(jsonData.success).to.eql(true);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/session/start",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"session",
+						"start"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EDGE: Get Ready for Transfer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bebf4b4d-219d-4d12-85ab-8b86d057a0cb",
+						"exec": [
+							"pm.test(\"Get correct session_id\", function () {",
+							"    var previous_sessionId = pm.environment.get(\"session_id\");",
+							"    var jsonData = pm.response.json();",
+							"   ",
+							"    pm.expect(jsonData.session_id).to.eql(previous_sessionId);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Api-Key",
+						"value": "edge0001-key",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/edge/readyfortransfer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"edge",
+						"readyfortransfer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EDGE: send status update",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-api-key",
+						"value": "edge0001-key",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"file_name\":\"84653234.dcm\", \n\t\"file_path\":\"./84653234.dcm\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"edge",
+						"statusupdate",
+						"{{session_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EDGE: send status update Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-api-key",
+						"value": "edge0001-key",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"file_name\":\"84653245.dcm\", \n\t\"file_path\":\"./84653245.dcm\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"edge",
+						"statusupdate",
+						"{{session_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EDGE: send status update Copy Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-api-key",
+						"value": "edge0001-key",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"file_name\":\"84653256.dcm\", \n\t\"file_path\":\"./84653256.dcm\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/edge/statusupdate/{{session_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"edge",
+						"statusupdate",
+						"{{session_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EDGE: send transfer complete status",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "x-api-key",
+						"value": "edge0001-key",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/edge/transfercomplete/{{session_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"edge",
+						"transfercomplete",
+						"{{session_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API: Get Session Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "07710ccd-91f1-46f9-9ba6-8a465e6cbe5c",
+						"exec": [
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/session/status/{{session_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"session",
+						"status",
+						"{{session_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "740a8c50-b243-47bd-aa18-cba4c1cdb21d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "f431f67e-8aa7-4974-b27a-1b30c41d9201",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "9b060a26-f7a0-44d4-9c36-7477e71aa0f5",
+			"key": "session_id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
