@@ -14,6 +14,7 @@ from functools import partial, reduce
 from datetime import datetime
 import redis
 from rq import Queue, Connection
+from tasks.mask import prepare_for_mask
 
 #define pipeline
 def compose(*funcs):
@@ -103,6 +104,12 @@ def classify_for_relevance(session_id):
     print('\'classify_for_relevance\' is in stage {}'.format(new_stage))
     
     close_connection(db_conn)
+
+    with Connection(redis.from_url(config['REDIS_URL'])):
+        q = Queue()
+        task = q.enqueue(prepare_for_mask, session_id)
+        print('Task scheduled for prepare_for_mask({})'.format(session_id))
+
     end_dt = datetime.now()
     delta = end_dt - start_dt
     print('classify_for_relevance for {} took:'.format(session_id), delta)

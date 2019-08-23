@@ -95,6 +95,8 @@ def create_app(script_info=None):
                                         initial_path text NOT NULL,
                                         processing_path text,
                                         relevance_result text,
+                                        max_frame_path text,
+                                        mask_path text,
                                         error_message text,
                                         begin_date text NOT NULL,
                                         end_date text NOT NULL,

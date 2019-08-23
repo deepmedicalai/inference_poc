@@ -44,7 +44,8 @@ FILE_STAGE_TO_INDEX = {
     'moved_to_processing':11,
     'has_relevance_frame':21,
     'has_relevance_result':29,
-    'has_mask_frame':31,
+    'has_max_frame': 31,
+    'has_mask_frame':35,
     'has_mask_result':39,
     'ready_for_results':99,
     'errored':199

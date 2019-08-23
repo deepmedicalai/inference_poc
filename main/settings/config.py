@@ -19,6 +19,17 @@ class BaseConfig(object):
     RELEVANCE_MODEL_FILE = './tfmodels/dicom_rel_q_v1.tflite'
     RELEVANCE_FRAME_SUFFIX = '_rel48_v1'
 
+    FRAME_SIZE = 512
+    CLASSIFICATION_MASK_SIZE = 128
+    CONVERT_TO_GRAY = True
+    PERSIST_FRAMES = False
+    SEGMENTATION_MODEL_FILE = './tfmodels/dicom_mask_v1.tflite'
+    
+    PROCESSING_MASK_DIR = './masks/'
+    PROCESSING_FRAME_DIR = './frames/'
+    PROCESSING_MAXFRAME_DIR = './maxframe/'
+    PROCESSING_SEGMENTED_DIR = './segmented/'
+
 
 class DevelopmentConfig(BaseConfig):
     """Development configuration."""

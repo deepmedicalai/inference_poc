@@ -5,6 +5,7 @@ from pydicom.filereader import read_dicomdir, InvalidDicomError
 
 #imaging 
 import cv2
+from PIL import Image
 
 #tf
 import numpy as np
@@ -15,6 +16,7 @@ from os import listdir, walk
 from os.path import basename, dirname, join, exists, isfile, getsize, splitext
 import tempfile
 import json
+import copy
 
 VALID_IMAGE_TYPES = ['1.2.840.10008.5.1.4.1.1.3.1','1.2.840.10008.5.1.4.1.1.6.1']
 DICOMDIR_UID = '1.2.840.10008.1.3.10'
@@ -31,6 +33,17 @@ def get_relevance_inference_interpreter(relevance_model_path, options):
     relevance_output_details = relevance_interpreter.get_output_details()
 
     return relevance_interpreter, relevance_input_details, relevance_output_details
+
+def get_segmentation_inference_interpreter(segmentation_model_path, options):
+    # init segmentation model
+    segmentation_interpreter = tf.lite.Interpreter(model_path=segmentation_model_path)
+    
+    # Get input and output tensors.
+    segmentation_input_details = segmentation_interpreter.get_input_details()
+    segmentation_output_details = segmentation_interpreter.get_output_details()
+
+    # "segmentation_input_shape = segmentation_input_details[0]['shape']"
+    return segmentation_interpreter, segmentation_input_details, segmentation_output_details
 
 #color convert
 def get_pixel_array_rgb(ds):
@@ -311,6 +324,57 @@ def get_max_of_frames(iter_element, options):
             element.max_frame = max_of_frames
             yield element
 
+def get_max_of_frames_internal(element, options):
+    if options['SHOW_DEBUG_MESSAGES']:
+        print('get_max_of_frames_internal: ', element['id'])
+
+    opt_frame_size = options['FRAME_SIZE']
+    opt_convert_to_gray = options['CONVERT_TO_GRAY']
+    opt_persist_frames = options['PERSIST_FRAMES']
+    opt_persist_frames_dirpath = options['PERSIST_FRAMES_DIRPATH']
+
+    ds = pydicom.dcmread(element['dicom_path'])
+    frames_num = get_frames_num(ds)
+    # element.frames_num = frames_num
+    if frames_num == 0:
+        rgb_frame, max_of_frames = create_frame(ds, opt_frame_size, opt_convert_to_gray)
+
+        #saving frame if necessary
+        if opt_persist_frames:
+            img_name = '{}' + '_frame_0.png'
+            save_frame(element['dicom_path'], opt_persist_frames_dirpath, img_name, rgb_frame)
+    else:
+        max_of_frames = None
+        cnt = 0
+
+        # somehow, it reads the pixel data in right way
+        #convert all frames to RGB 
+        # all_frames = convert_frame_to_rgb(ds.pixel_array, ds.PhotometricInterpretation)
+        for frame in ds.pixel_array:
+            _frame = resize(frame, opt_frame_size, opt_frame_size)
+            rgb_frame = copy.copy(_frame)        
+
+            if opt_convert_to_gray:
+                _frame = convert_to_grayscale(_frame)
+
+            #saving frame if necessary
+            if opt_persist_frames:
+                img_name = '{}' + '_frame_{}.png'.format(cnt)   #the first {} will be replaced in save_frame
+                save_frame(element['dicom_path'], opt_persist_frames_dirpath, img_name, rgb_frame)
+
+            if max_of_frames is None:
+                #just for the first frame
+                max_of_frames = _frame
+            else:
+                #calc smax
+                max_of_frames = np.where(max_of_frames < _frame, _frame, max_of_frames)
+
+            cnt = cnt + 1
+
+    #add property to element object
+    element['max_of_frames'] = max_of_frames
+    return element
+
 # generator to save .max_frame property to PNG
 def save_max_frame_element(iter_element, options):
     for ie in iter_element:
@@ -327,6 +391,24 @@ def save_max_frame_element(iter_element, options):
             max_frame_path = save_frame(ie.dicom_path, max_frame_dirpath, img_name, max_frame)
             element.max_frame_path = max_frame_path
             yield element
+
+def save_max_frame_element_internal(element, options):
+    if options['SHOW_DEBUG_MESSAGES']:
+        print('get_max_of_frames_internal: ', element['id'])
+
+    if element['max_of_frames'] is None:
+        element['break_processing'] = True
+        print('Frame data for mask classification missing {}:{}'.format(element['id'], metadata.MediaStorageSOPClassUID))
+        element['error_message'] = 'Frame data for mask classification missing'
+        return element
+
+    max_frame_dirpath = options['PERSIST_MAXFRAME_DIRPATH']
+    img_name = './{}' + '_maxframe_{}.png'.format(options['FRAME_SIZE'])
+    
+    max_frame_path = save_frame(element['dicom_path'], max_frame_dirpath, img_name, element['max_of_frames'])
+    element['max_frame_path'] = max_frame_path
+    return element
+
             
 def get_mask_for_dicom(iter_element, options):
     for ie in iter_element:
@@ -361,7 +443,42 @@ def get_mask_for_dicom(iter_element, options):
 
             element.mask_data = output_mask.numpy()*255
             yield element
+
+def get_mask_for_dicom_internal(element, options):
+    if options['SHOW_DEBUG_MESSAGES']:
+        print('get_mask_for_dicom: ', element['id'])
         
+    if element['max_frame_path'] is None:
+        element['break_processing'] = True
+        print('Max frame is missing {}:{}'.format(element['id'], metadata.MediaStorageSOPClassUID))
+        element['error_message'] = 'Max frame is missing'
+        return element
+
+    image_wh = options['SEGMENTATION_FRAME_SIZE']
+    segmentation_model_interpreter = options['SEGMENTATION_INTERPRETER']
+    segmentation_model_inputs = options['SEGMENTATION_INTERPRETER_INPUTS']
+    segmentation_model_outputs = options['SEGMENTATION_INTERPRETER_OUTPUTS']
+
+    #using CV2 to convert PNG path to Numpy
+    image = cv2.imread(element['max_frame_path'])
+    image_gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY) #into grayscal
+    image_resized = resize(image_gray, image_wh, image_wh)
+    image_reshaped = image_resized.reshape(options['SEGMENTATION_INPUT_SHAPE'])  #reshape into expected input tensor
+    image_normalized = image_reshaped/255
+
+    input_data = np.array(image_normalized, dtype=np.float32)
+
+    segmentation_model_interpreter.set_tensor(segmentation_model_inputs[0]['index'], input_data)
+    #invoke TF Lite Inference invoker
+    segmentation_model_interpreter.invoke()
+
+    # The function `get_tensor()` returns a copy of the tensor data.
+    # Use `tensor()` in order to get a pointer to the tensor.
+    output_data = segmentation_model_interpreter.get_tensor(segmentation_model_outputs[0]['index'])
+    output_mask = create_mask(output_data)
+    element['mask_data'] = output_mask.numpy()*255
+    return element 
+
             
 def save_mask_resized(iter_element, options):
     for ie in iter_element:
@@ -386,6 +503,28 @@ def save_mask_resized(iter_element, options):
             #data[element.instance_id]['mask_path'] = element.mask_path
 
             yield element
+
+def save_mask_resized_internal(element, options):
+    if options['SHOW_DEBUG_MESSAGES']:
+        print('get_mask_for_dicom: ', element['id'])
+        
+    if element['mask_data'] is None:
+        element['break_processing'] = True
+        print('Mask image data is missing {}:{}'.format(element['id'], metadata.MediaStorageSOPClassUID))
+        element['error_message'] = 'Mask image data is missing'
+        return element
+
+    opt_masks_target_path = options['MASKS_TARGET_PATH']
+    img_wh = options['FRAME_SIZE']
+    # at this stage error occurs, but resize will be executed anyway during applying of mask
+    # resized_mask = resize(mask_data, img_wh, img_wh)
+    #save mask
+    mask_img_name = '{}_mask_{}.png'.format(element['base_name'], img_wh)
+    image_path = join(dirname(opt_masks_target_path), mask_img_name)
+    cv2.imwrite(image_path, mask_data)
+
+    element['mask_path'] = image_path
+    return element
                 
 def apply_mask_to_frames(iter_element, options):
     for ie in iter_element:
