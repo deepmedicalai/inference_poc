@@ -7,7 +7,7 @@ from webserver import query_db, upsert_db, delete_db
 import sqlite3
 import importlib
 from tasks.stages import SESSION_STAGE_TO_INDEX, SESSION_STAGE, FILE_STAGE_TO_INDEX, FILE_STAGE, set_session_stage_to, get_session_status
-from dicoms.utils import get_segmentation_inference_interpreter
+from dicoms.utils import get_segmentation_inference_model
 from dicoms.utils import get_max_of_frames_internal, save_max_frame_element_internal, get_mask_for_dicom_internal, save_mask_resized_internal
 from flask import Flask
 from functools import partial, reduce
@@ -215,12 +215,11 @@ def save_mask_path_internal(element, options, db_conn):
 
 
 def create_max_of_frames(db_conn, session_id, config):
-
     relative_session_dir = './'+str(session_id)
     local_processing_session_dir = os.path.join(config['PROCESSING_DIR'], relative_session_dir)
     
     options = {}
-    options['FRAME_SIZE'] = config['FRAME_SIZE']
+    options['FRAME_SIZE'] = config['CLASSIFICATION_MASK_SIZE']
     options['CONVERT_TO_GRAY'] = config['CONVERT_TO_GRAY']
     options['PERSIST_FRAMES'] = config['PERSIST_FRAMES']
     options['PERSIST_FRAMES_DIRPATH'] =  os.path.join(local_processing_session_dir, config['PROCESSING_FRAME_DIR'])
@@ -236,8 +235,7 @@ def create_max_of_frames(db_conn, session_id, config):
 
         print('Count ({}): '.format(session_id), count)
 
-    relevant = 'YES'
-    for row in query_db(db_conn, 'SELECT id, processing_path FROM files where session_id = ? and relevance_result = ?', [session_id, relevant]):
+    for row in query_db(db_conn, 'SELECT id, processing_path FROM files where session_id = ? and relevance_result = ?', [session_id, 'YES']):
         element = {}
         element = dbrecord_to_object_internal(row, options)
         if (element['break_processing']):
@@ -253,45 +251,40 @@ def create_max_of_frames(db_conn, session_id, config):
                 print('Step 2 failure', element)
             continue
 
-        element = save_max_frame_element_internal(element, options)
-        if (element['break_processing']):
-            #record reason
-            if options['SHOW_DEBUG_MESSAGES']:
-                print('Step 3 failure', element)
-            continue
+        # element = save_max_frame_element_internal(element, options)
+        # if (element['break_processing']):
+        #     #record reason
+        #     if options['SHOW_DEBUG_MESSAGES']:
+        #         print('Step 3 failure', element)
+        #     continue
 
         element = save_max_frame_path_internal(element, options, db_conn)
         if (element['break_processing']):
             #record reason
             if options['SHOW_DEBUG_MESSAGES']:
                 print('Step 4 failure', element)
-            continue
-    
+            continue  
     return True
 
-def classify_files_for_mask(db_conn, session_id, config):
 
+def classify_files_for_mask(db_conn, session_id, config):
     options = {}
     options['SHOW_DEBUG_MESSAGES'] = False
 
-    segmentation_interpreter, model_inputs, model_outputs = get_segmentation_inference_interpreter(config['SEGMENTATION_MODEL_FILE'], options)
-    if segmentation_interpreter is None:
-        print('Error loading TF model')
+    segmentation_model = get_segmentation_inference_model(config['SEGMENTATION_MODEL_FILE'], options)
+    if segmentation_model is None:
+        print('Error loading PyTorch model')
         return
-
-    segmentation_input_shape = model_inputs[0]['shape']
 
     local_processing_session_dir = os.path.join(config['PROCESSING_DIR'], './'+str(session_id))
     
-    options['SEGMENTATION_FRAME_SIZE'] = config['CLASSIFICATION_MASK_SIZE']
-    options['SEGMENTATION_INTERPRETER'] = segmentation_interpreter
-    options['SEGMENTATION_INTERPRETER_INPUTS'] = model_inputs
-    options['SEGMENTATION_INTERPRETER_OUTPUTS'] = model_outputs
-    options['SEGMENTATION_INPUT_SHAPE'] = segmentation_input_shape
+    options['FRAME_SIZE'] = config['FRAME_SIZE']
+    options['CLASSIFICATION_MASK_SIZE'] = config['CLASSIFICATION_MASK_SIZE']
+    options['SEGMENTATION_MODEL'] = segmentation_model
     options['PERSIST_FRAMES_DIRPATH'] =  os.path.join(local_processing_session_dir, config['PROCESSING_FRAME_DIR'])
     options['MASKS_TARGET_PATH'] = os.path.join(local_processing_session_dir, config['PROCESSING_MASK_DIR'])
     options['PERSIST_SEGMENTED_FRAMES_DIRPATH'] = os.path.join(local_processing_session_dir, config['PROCESSING_SEGMENTED_DIR'])
-    options['SHOW_DEBUG_MESSAGES'] = True
+    options['SHOW_DEBUG_MESSAGES'] = False
 
     os.mkdir(options['MASKS_TARGET_PATH'])
 
@@ -303,14 +296,12 @@ def classify_files_for_mask(db_conn, session_id, config):
 
     for row in query_db(db_conn, 'SELECT id, processing_path, session_id, file_stage, max_frame_path FROM files where session_id = ? and relevance_result = ?', [session_id, 'YES']):       
         element = {}
-        print(row)
         element = dbrecord_to_object_internal(row, options)
         if (element['break_processing']):
             #record reason
             if options['SHOW_DEBUG_MESSAGES']:
                 print('Step 1 failure', element)
             continue
-        print('element from row {}'.format(element))
 
         element = get_mask_for_dicom_internal(element, options)
         if (element['break_processing']):

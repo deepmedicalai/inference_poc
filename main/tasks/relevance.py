@@ -7,7 +7,7 @@ from webserver import query_db, upsert_db, delete_db
 import sqlite3
 import importlib
 from tasks.stages import SESSION_STAGE_TO_INDEX, SESSION_STAGE, FILE_STAGE_TO_INDEX, FILE_STAGE, set_session_stage_to, get_session_status
-from dicoms.utils import get_relevance_inference_interpreter, path_to_object, create_frame_for_classification, get_relevance
+from dicoms.utils import get_relevance_inference_model, path_to_object, create_frame_for_classification, get_relevance
 from dicoms.utils import create_frame_for_classification_internal, get_relevance_internal
 from flask import Flask
 from functools import partial, reduce
@@ -238,20 +238,13 @@ def classify_files_for_relevance(db_conn, session_id, config):
     options = {}
     options['SHOW_DEBUG_MESSAGES'] = False
 
-    relevance_interpreter, model_inputs, model_outputs = get_relevance_inference_interpreter(config['RELEVANCE_MODEL_FILE'], options)
-    if relevance_interpreter is None:
-        print('Error loading TF model')
+    relevance_model = get_relevance_inference_model(config['RELEVANCE_MODEL_FILE'], options)
+    if relevance_model is None:
+        print('Error loading PyTorch model')
         return
-
-    relevance_input_shape = model_inputs[0]['shape']
-
     
     options['CLASSIFICATION_SIZE'] = 48
-    options['RELEVANCE_INTERPRETER'] = relevance_interpreter
-    options['RELEVANCE_INTERPRETER_INPUTS'] = model_inputs
-    options['RELEVANCE_INTERPRETER_OUTPUTS'] = model_outputs
-    options['RELEVANCE_INPUT_SHAPE'] = relevance_input_shape
-    options['RELEVANCE_THRESHOLD'] = 0.7
+    options['RELEVANCE_MODEL'] = relevance_model
     options['SHOW_DEBUG_MESSAGES'] = False
 
     # create_frame_for_classification_with_options = partial(create_frame_for_classification, options=options)

@@ -1,6 +1,7 @@
 from webserver import query_db, upsert_db, delete_db
 from tasks.stages import SESSION_STAGE_TO_INDEX, SESSION_STAGE, FILE_STAGE_TO_INDEX, FILE_STAGE
 from tasks.relevance import prepare_for_relevance
+from tasks.pipline import prepare_files
 import redis
 from flask import current_app
 from rq import Queue, Connection
@@ -111,8 +112,8 @@ def edge_completed_transfer(db_conn, session_id, config):
             
         with Connection(redis.from_url(config['REDIS_URL'])):
             q = Queue()
-            task = q.enqueue(prepare_for_relevance, session_id)
-            current_app.logger.info('Task scheduled for prepare_for_relevance({})'.format(session_id))
+            task = q.enqueue(prepare_files, session_id)
+            current_app.logger.info('Task scheduled for prepare_files({})'.format(session_id))
 
         info = {}
         info['file_count'] = file_count
